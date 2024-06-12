@@ -1,0 +1,137 @@
+# Commented out parameters are those with the same value as base LLVM style.
+# We can uncomment them if we want to change their value, or enforce the
+# chosen value in case the base style changes (last sync: Clang 14.0).
+---
+### General config, applies to all languages ###
+### C++ specific config ###
+Language: Cpp
+Standard: c++17
+BasedOnStyle: LLVM
+ColumnLimit: 120
+AlignAfterOpenBracket: Align
+BreakBeforeBinaryOperators: All
+AlignOperands:   AlignAfterOperator
+AlignConsecutiveAssignments:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: true
+AlignConsecutiveBitFields: 
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: false
+AlignConsecutiveDeclarations: 
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: false
+AlignTrailingComments: 
+  Kind: Always
+  OverEmptyLines: 2
+BinPackParameters: false
+BinPackArguments: false
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortCaseLabelsOnASingleLine: true
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel:  True
+  AfterClass:      True
+  AfterControlStatement: Always 
+  AfterEnum:       True
+  AfterFunction:   True
+  AfterNamespace:  True
+  AfterStruct:     True
+  AfterUnion:      True
+  AfterExternBlock: True
+  BeforeCatch:     True
+  BeforeElse:      True
+  BeforeLambdaBody: false
+  BeforeWhile:     false
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+BreakBeforeConceptDeclarations: Always
+BreakInheritanceList: BeforeColon
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: AfterColon
+QualifierAlignment: Leave
+CompactNamespaces: false
+Cpp11BracedListStyle: false
+DerivePointerAlignment: false
+EmptyLineAfterAccessModifier: Never
+EmptyLineBeforeAccessModifier: LogicalBlock
+ForEachMacros:
+  - foreach
+  - Q_FOREACH
+  - BOOST_FOREACH
+IncludeBlocks:   Preserve
+IncludeCategories:
+  - Regex:           '".*"'
+    Priority:        1
+  - Regex:           '^<.*\.h>'
+    Priority:        2
+  - Regex:           '^<.*'
+    Priority:        3
+IncludeIsMainRegex: '(Test)?$'
+IncludeIsMainSourceRegex: ''
+# TabWidth: 4
+IndentCaseLabels: true
+IndentCaseBlocks: true
+NamespaceIndentation: All
+IndentAccessModifiers: true
+# AccessModifierOffsets: -4
+IndentPPDirectives: None
+IndentExternBlock: Indent
+IndentRequiresClause: false
+IndentWidth: 4
+IndentWrappedFunctionNames: True
+InsertTrailingCommas: None
+KeepEmptyLinesAtTheStartOfBlocks: false
+LambdaBodyIndentation: Signature
+MacroBlockBegin: ''
+MacroBlockEnd:   ''
+MaxEmptyLinesToKeep: 1
+PointerAlignment: Right
+PPIndentWidth:   -1
+ReferenceAlignment: Pointer
+ReflowComments:  true
+RemoveBracesLLVM: false
+SeparateDefinitionBlocks: Leave
+ShortNamespaceLines: 1
+SortIncludes:    CaseSensitive
+SortJavaStaticImport: Before
+SortUsingDeclarations: true
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: true
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: false
+# The following options make the DSL macros behave
+#   more like the C++ keywords they correspond to.
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+  AfterControlStatements: true
+  AfterForeachMacros: false
+  AfterFunctionDeclarationName: false
+  AfterFunctionDefinitionName: false
+  AfterIfMacros: true
+  AfterOverloadedOperator: false
+  BeforeNonEmptyParentheses: false
+SpaceAroundPointerQualifiers: Default
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceInEmptyBlock: false
+SpacesBeforeTrailingComments: 1
+SpacesInAngles:  Never
+
+SpacesInContainerLiterals: true
+## Godot TODO: We'll want to use a min of 1, but we need to see how to fix
+## our comment capitalization at the same time.
+SpacesInLineCommentPrefix:
+  Minimum:         0
+  Maximum:         -1
+SpacesInSquareBrackets: false
+SpaceBeforeSquareBrackets: false
+BitFieldColonSpacing: Both
+AlignArrayOfStructures: Right
