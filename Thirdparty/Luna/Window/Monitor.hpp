@@ -1,15 +1,15 @@
 /*!
-* This file is a portion of Luna SDK.
-* For conditions of distribution and use, see the disclaimer
-* and license in LICENSE.txt
-* 
-* @file Monitor.hpp
-* @author JXMaster
-* @date 2022/10/31
-*/
+ * This file is a portion of Luna SDK.
+ * For conditions of distribution and use, see the disclaimer
+ * and license in LICENSE.txt
+ *
+ * @file Monitor.hpp
+ * @author JXMaster
+ * @date 2022/10/31
+ */
 #pragma once
-#include <Luna/Runtime/Interface.hpp>
 #include <Luna/Runtime/Event.hpp>
+#include <Luna/Runtime/Interface.hpp>
 #include <Luna/Runtime/Math/Vector.hpp>
 
 #ifndef LUNA_WINDOW_API
@@ -22,7 +22,7 @@ namespace Luna
     {
         //! @addtogroup Window
         //! @{
-        
+
         //! The opaque handle that represents the system moditor.
         using monitor_t = opaque_t;
 
@@ -44,23 +44,23 @@ namespace Luna
         using monitor_event_handler_t = void(monitor_t monitor, MonitorEvent e);
 
         //! Gets the event that will be called when one monitor event is triggered.
-        LUNA_WINDOW_API Event<monitor_event_handler_t>& get_monitor_event();
+        LUNA_WINDOW_API Event<monitor_event_handler_t> &get_monitor_event();
 
         //! Describes one video mode of one monitor.
         struct VideoMode
         {
-            //! The width of the monitor in screen coordinates.
-            u32 width;
-            //! The height of the monitor in screen coordinates.
-            u32 height;
-            //! The bit depth of the red channel of the video mode.
-            u32 red_bits;
-            //! The bit depth of the green channel of the video mode.
-            u32 green_bits;
-            //! The bit depth of the blue channel of the video mode.
-            u32 blue_bits;
-            //! The refresh rate, in Hz, of the video mode.
-            u32 refresh_rate;
+                //! The width of the monitor in screen coordinates.
+                u32 width;
+                //! The height of the monitor in screen coordinates.
+                u32 height;
+                //! The bit depth of the red channel of the video mode.
+                u32 red_bits;
+                //! The bit depth of the green channel of the video mode.
+                u32 green_bits;
+                //! The bit depth of the blue channel of the video mode.
+                u32 blue_bits;
+                //! The refresh rate, in Hz, of the video mode.
+                u32 refresh_rate;
         };
 
         //! Gets the number of supported video modes of the monitor.
@@ -89,5 +89,5 @@ namespace Luna
         LUNA_WINDOW_API Name get_monitor_name(monitor_t monitor);
 
         //! @}
-    }
-}
+    } //namespace Window
+} //namespace Luna

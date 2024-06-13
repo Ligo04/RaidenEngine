@@ -1,5 +1,7 @@
 #include "Engine.hpp"
-#include "Runtime/Global/GlobalContext.hpp"
+#include "Luna/Runtime/Assert.hpp"
+#include "Runtime/Render/RenderSystem.hpp"
+#include "Runtime/Render/WindowsManager.hpp"
 #include <Luna/Asset/Asset.hpp>
 #include <Luna/Font/Font.hpp>
 #include <Luna/HID/HID.hpp>
@@ -18,6 +20,7 @@ namespace Raiden
 {
     void RaidenEngine::StartEngine(const String &config_file_path)
     {
+        luassert_always(Luna::init());
         // log
         set_log_to_platform_enabled(true);
         set_log_to_platform_verbosity(LogVerbosity::verbose);
@@ -35,16 +38,17 @@ namespace Raiden
         {
             log_error("App", explain(r.errcode()));
         }
-        // global context
-        r = g_runtime_global_context.StartSystems("");
-        if (failed(r))
-        {
-            log_error("App", explain(r.errcode()));
-        }
+
+        WindowsManager::Create();
+        RenderSystem::Create();
         log_info("App", "Engine Started!");
     };
 
-    void RaidenEngine::ShutdownEngine() { log_info("App", "Engine Closed!"); }
+    void RaidenEngine::ShutdownEngine()
+    {
+        // Luna::close();
+        log_info("App", "Engine Closed!");
+    }
     void RaidenEngine::SetCurrentDirToProcessPath()
     {
         Path p = get_process_path();
@@ -73,28 +77,30 @@ namespace Raiden
 
     RV RaidenEngine::TickOneFrame(f32 delta_time)
     {
-        auto window_system = g_runtime_global_context.m_window_system;
-        luassert_always(window_system);
         // window_event
         Window::poll_events();
 
-        if (window_system->is_closed())
+        auto windows = WindowsManager::GetInstance()->GetWindows();
+
+        if (windows->is_closed())
         {
             m_exiting = false;
             return ok;
         }
-        if (window_system->is_minimized())
+
+        if (windows->is_minimized())
         {
-            sleep(16);
+            sleep(100);
             return ok;
         }
 
         LogicalTick(delta_time);
         RendererTick(delta_time);
         CalculateFps(delta_time);
+
         c8 buf[64];
         snprintf(buf, sizeof(buf), "Raiden Engine %lld FPS", GetFps());
-        lupanic_if_failed(g_runtime_global_context.m_window_system->set_title(buf));
+        lupanic_if_failed(windows->set_title(buf));
         return ok;
     }
 

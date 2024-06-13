@@ -5,7 +5,7 @@
 namespace Raiden
 {
     using namespace Luna;
-    class RHIContent
+    class RenderRHI
     {
         private:
             Ref<RHI::IDevice>       m_device;
