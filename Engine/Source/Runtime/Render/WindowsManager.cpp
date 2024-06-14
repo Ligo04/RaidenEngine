@@ -3,7 +3,6 @@
 #include "Luna/Runtime/Ref.hpp"
 #include "Luna/Runtime/Result.hpp"
 #include "Luna/Window/MessageBox.hpp"
-#include "Luna/Window/Source/GLFW/Window.hpp"
 #include "Luna/Window/Window.hpp"
 
 namespace Raiden

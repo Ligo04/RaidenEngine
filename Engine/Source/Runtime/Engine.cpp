@@ -36,18 +36,18 @@ namespace Raiden
         auto r = init_modules();
         if (failed(r))
         {
-            log_error("App", explain(r.errcode()));
+            log_error("Engine", explain(r.errcode()));
         }
 
         WindowsManager::Create();
         RenderSystem::Create();
-        log_info("App", "Engine Started!");
+        log_info("Engine", "Engine Started!");
     };
 
     void RaidenEngine::ShutdownEngine()
     {
         // Luna::close();
-        log_info("App", "Engine Closed!");
+        log_info("Engine", "Engine Closed!");
     }
     void RaidenEngine::SetCurrentDirToProcessPath()
     {
