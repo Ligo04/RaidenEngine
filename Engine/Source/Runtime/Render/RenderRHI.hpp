@@ -1,4 +1,5 @@
 #pragma once
+#include "Luna/RHI/CommandBuffer.hpp"
 #include <Luna/RHI/RHI.hpp>
 #include <Luna/Runtime/Ref.hpp>
 
@@ -7,24 +8,25 @@ namespace Raiden
     using namespace Luna;
     class RenderRHI
     {
-        private:
-            Ref<RHI::IDevice>       m_device;
-            Ref<RHI::IAdapter>      m_physics_devices;
-            Ref<RHI::ISwapChain>    m_swap_chain;
-            Ref<RHI::SwapChainDesc> m_swap_chain_desc;
+        public:
+            static void       Create();
+            static RenderRHI *GetInstance();
 
-            struct SwapChainImage
-            {
-                    Ref<RHI::ITexture>    image;
-                    Ref<RHI::TextureDesc> image_view;
-            };
-            Vector<SwapChainImage>   m_swap_chain_images;
-            u32                      m_swap_chain_index = static_cast<u32>(-1);
+        private:
+            static RenderRHI *m_instance;
+
+        public:
+            RenderRHI();
+            ~RenderRHI();
+            RV InitRHI();
+
+        public:
+            Ref<RHI::IDevice>        m_device;
+            Ref<RHI::ISwapChain>     m_swap_chain;
+            Ref<RHI::ICommandBuffer> m_command_buffer;
 
             u32                      m_graphics_queue;
-            u32                      m_compute_queue;
-            u32                      m_transfer_queue;
-
-            Ref<RHI::ICommandBuffer> m_command_buffer;
+            u32                      m_async_compute_queue;
+            u32                      m_async_copy_queue;
     };
 } //namespace Raiden

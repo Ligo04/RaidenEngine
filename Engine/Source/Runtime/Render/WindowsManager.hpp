@@ -1,6 +1,7 @@
 #pragma once
 #include "Luna/Runtime/Ref.hpp"
 #include "Luna/Runtime/Result.hpp"
+#include "Luna/Runtime/String.hpp"
 #include <Luna/Window/Window.hpp>
 namespace Raiden
 {
@@ -20,9 +21,7 @@ namespace Raiden
             RV                   Init();
             void                 Show();
             Ref<Window::IWindow> GetWindows();
-            bool                 WindowsShouldClose();
-            bool                 WindowsIsMinied();
-            void                 SetTitle(const String &title);
+            void                 SetTitle(u64 fps);
 
         private:
             Ref<Window::IWindow> m_window{ nullptr };

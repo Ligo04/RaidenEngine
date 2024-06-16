@@ -46,8 +46,11 @@ namespace Raiden
 
     Ref<Window::IWindow> WindowsManager::GetWindows() { return m_window.get(); }
 
-    bool                 WindowsManager::WindowsIsMinied() { return m_window->is_minimized(); }
-
-    bool                 WindowsManager::WindowsShouldClose() { return m_window->is_closed(); }
+    void                 WindowsManager::SetTitle(u64 fps)
+    {
+        c8 buf[64];
+        snprintf(buf, sizeof(buf), "Raiden Engine %lld FPS", fps);
+        lupanic_if_failed(m_window->set_title(buf));
+    }
 
 } //namespace Raiden

@@ -1,13 +1,11 @@
 #include "RenderSystem.hpp"
-#include "Runtime/Render/WindowsManager.hpp"
-
 namespace Raiden
 {
     RenderSystem *RenderSystem::m_instance = nullptr;
 
     void          RenderSystem::Create() { m_instance = new RenderSystem(); }
 
-    RenderSystem::RenderSystem() {}
+    RenderSystem::RenderSystem() { RenderRHI::Create(); }
 
     RenderSystem *RenderSystem::GetInstance() { return m_instance; }
 

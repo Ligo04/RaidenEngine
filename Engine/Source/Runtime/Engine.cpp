@@ -98,9 +98,7 @@ namespace Raiden
         RendererTick(delta_time);
         CalculateFps(delta_time);
 
-        c8 buf[64];
-        snprintf(buf, sizeof(buf), "Raiden Engine %lld FPS", GetFps());
-        lupanic_if_failed(windows->set_title(buf));
+        WindowsManager::GetInstance()->SetTitle(m_fps);
         return ok;
     }
 
