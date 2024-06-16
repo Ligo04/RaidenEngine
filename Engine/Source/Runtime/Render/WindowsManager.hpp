@@ -1,7 +1,6 @@
 #pragma once
 #include "Luna/Runtime/Ref.hpp"
 #include "Luna/Runtime/Result.hpp"
-#include "Luna/Runtime/String.hpp"
 #include <Luna/Window/Window.hpp>
 namespace Raiden
 {
